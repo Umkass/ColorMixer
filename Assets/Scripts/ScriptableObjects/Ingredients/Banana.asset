@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a82b69ff5f79834794db5423c65a2bc, type: 3}
+  m_Name: Banana
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 4433852654516623590, guid: 7d2bbe940c9a5634797e2d9f516fb0eb, type: 3}
+  _sprite: {fileID: 4129085186536377779, guid: cc4c7e1032f388143b4001bc8cff6bfc, type: 3}
+  _color: {r: 0.9960785, g: 0.91372555, b: 0.09019608, a: 1}
