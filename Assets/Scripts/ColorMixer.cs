@@ -1,11 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ColorMixer : MonoBehaviour
 {
-    [SerializeField] private List<Color> _ingredientColours = new List<Color>();
-    [SerializeField] private List<Ingredient> _ingredients = new List<Ingredient>();
+    private List<Color> _ingredientColours = new List<Color>();
+    private List<Ingredient> _ingredients = new List<Ingredient>();
 
     private Animator _animator;
     private int _openCoverClip,
@@ -15,8 +14,13 @@ public class ColorMixer : MonoBehaviour
 
     [SerializeField]
     private Renderer _liquidRenderer;
-
     private bool isFilled = false;
+
+    private Color _currentResultColor;
+
+    public Color CurrentResultColor { get => _currentResultColor; private set => _currentResultColor = value; }
+    public List<Color> IngredientColours { get => _ingredientColours; private set => _ingredientColours = value; }
+
     private void Awake()
     {
         _animator = GetComponentInParent<Animator>();
@@ -26,39 +30,34 @@ public class ColorMixer : MonoBehaviour
         _mixAction = Animator.StringToHash("MixAction");
     }
 
-    public Color MixColours()   
+    public void MixColours()
     {
-        float totalRed = 0f;
-        float totalGreen = 0f;
-        float totalBlue = 0f;
+            float totalRed = 0f;
+            float totalGreen = 0f;
+            float totalBlue = 0f;
 
-        foreach (Color colour in _ingredientColours)
-        {
-            totalRed += colour.r;
-            totalGreen += colour.g;
-            totalBlue += colour.b;
-        }
+            foreach (Color colour in _ingredientColours)
+            {
+                totalRed += colour.r;
+                totalGreen += colour.g;
+                totalBlue += colour.b;
+            }
 
-        float numColours = _ingredientColours.Count;
-        Color _resultColor = new Color(totalRed / numColours, totalGreen / numColours, totalBlue / numColours);
-        MixAction();
-        _liquidRenderer.material.SetColor("_Color", _resultColor);
-        return _resultColor;
+            float numColours = _ingredientColours.Count;
+            _currentResultColor = new Color(totalRed / numColours, totalGreen / numColours, totalBlue / numColours);
+            MixAction();
+            _liquidRenderer.material.SetColor("_Color", _currentResultColor);
     }
-
 
     private void MixAction()
     {
-        Debug.Log(isFilled);
         if (!isFilled)
         {
-            Debug.Log("WithFill");
             _animator.Play(_mixActionWithFill);
             isFilled = true;
         }
         else
         {
-            Debug.Log("MixAction");
             _animator.Play(_mixAction);
         }
         foreach (var item in _ingredients)
@@ -67,6 +66,15 @@ public class ColorMixer : MonoBehaviour
         }
         _ingredients.Clear();
     }
+
+    public void ResetLiquid()
+    {
+        isFilled = false;
+        _ingredients.Clear();
+        _ingredientColours.Clear();
+        _liquidRenderer.material.SetColor("_Color", Color.white);
+    }
+
     public void OpenCover()
     {
         _animator.Play(_openCoverClip);

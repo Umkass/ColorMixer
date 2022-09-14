@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InputHandler : MonoBehaviour
@@ -12,10 +10,10 @@ public class InputHandler : MonoBehaviour
         if (_mixerCamera.isActiveAndEnabled)
         {
 #if UNITY_EDITOR
-                if (Input.GetMouseButtonDown(0))
-                {
+            if (Input.GetMouseButtonDown(0))
+            {
                 RaycastMixButton(Input.mousePosition);
-                }
+            }
 #elif UNITY_ANDROID || UNITY_IOS
             if (Input.touchCount > 0)
             {
@@ -37,7 +35,7 @@ public class InputHandler : MonoBehaviour
         if (Physics.Raycast(ray, out hit, _layerMask))
         {
             MixButton mixerButton = hit.collider.gameObject.GetComponent<MixButton>();
-            if (mixerButton!=null && mixerButton.isInteractable)
+            if (mixerButton != null && mixerButton.isInteractable)
             {
                 mixerButton.PressButton();
             }

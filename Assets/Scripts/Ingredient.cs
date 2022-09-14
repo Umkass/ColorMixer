@@ -1,25 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Ingredient : MonoBehaviour
 {
     public Color color;
     public bool isInBlender = false;
-    private Rigidbody rb;
+    private Rigidbody _rigidbody;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     //using in Animation Event
     public void MakeNonKinematic()
     {
-        rb.isKinematic = false;
+        _rigidbody.isKinematic = false;
     }
+    //using in Animation Event
     public void MakeKinematic()
     {
-        rb.isKinematic = true;
+        _rigidbody.isKinematic = true;
     }
 }

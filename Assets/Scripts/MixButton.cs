@@ -1,14 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animation)), DisallowMultipleComponent]
 public class MixButton : MonoBehaviour
 {
-    [SerializeField]
-    private ColorMixer _colorMixer;
-    [SerializeField]
-    private PercentCounter _percentCounter;
+    [SerializeField] private ColorMixer _colorMixer;
+    [SerializeField] private PercentCounter _percentCounter;
     private Animation _animPressButton;
     public bool isInteractable = true;
 
@@ -19,15 +16,19 @@ public class MixButton : MonoBehaviour
 
     public void PressButton()
     {
-        _percentCounter.CheckPercent(_colorMixer.MixColours());
-        _animPressButton.Play();
-        StartCoroutine(waitAnimations());
+        if (_colorMixer.IngredientColours.Count > 0)
+        {
+            _colorMixer.MixColours();
+            _animPressButton.Play();
+            StartCoroutine(waitAnimations());
+        }
     }
 
     private IEnumerator waitAnimations()
     {
         isInteractable = false;
         yield return new WaitForSeconds(2f);
+        _percentCounter.CheckPercent(_colorMixer.CurrentResultColor);
         isInteractable = true;
     }
 }

@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 0383e5f1c8da3434f905c7a4c5570c88, type: 3}
+    - {fileID: 2800000, guid: c0b5dc1870bc27845bfb69546f27eb7f, type: 3}
+    - {fileID: 2800000, guid: 43a546893fb8b234cb0047e93602eebb, type: 3}
+    - {fileID: 2800000, guid: 792beea1cf155cc43856fff2b1186991, type: 3}
+    - {fileID: 2800000, guid: 8f836f6dd197d3a4db3cb1ee5e1c33a4, type: 3}
+    - {fileID: 2800000, guid: cc4c7e1032f388143b4001bc8cff6bfc, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 8461402261578617700, guid: cc4c7e1032f388143b4001bc8cff6bfc, type: 3}
+  - {fileID: -5523624596377891976, guid: cc4c7e1032f388143b4001bc8cff6bfc, type: 3}
+  - {fileID: 8894030636934345173, guid: cc4c7e1032f388143b4001bc8cff6bfc, type: 3}
+  - {fileID: -5034703955856199138, guid: cc4c7e1032f388143b4001bc8cff6bfc, type: 3}
+  - {fileID: 4129085186536377779, guid: cc4c7e1032f388143b4001bc8cff6bfc, type: 3}
+  - {fileID: 7634809879669098404, guid: cc4c7e1032f388143b4001bc8cff6bfc, type: 3}
+  - {fileID: -6960219621324335271, guid: cc4c7e1032f388143b4001bc8cff6bfc, type: 3}
+  - {fileID: -7790448460745747974, guid: cc4c7e1032f388143b4001bc8cff6bfc, type: 3}
+  - {fileID: -1317983596774885118, guid: cc4c7e1032f388143b4001bc8cff6bfc, type: 3}
+  - {fileID: -2413806693520163455, guid: 792beea1cf155cc43856fff2b1186991, type: 3}
+  - {fileID: 21300000, guid: 0383e5f1c8da3434f905c7a4c5570c88, type: 3}
+  - {fileID: 21300000, guid: c0b5dc1870bc27845bfb69546f27eb7f, type: 3}
+  - {fileID: 21300000, guid: 43a546893fb8b234cb0047e93602eebb, type: 3}
+  - {fileID: 21300000, guid: 8f836f6dd197d3a4db3cb1ee5e1c33a4, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - ingredients_10
+  - ingredients_8
+  - ingredients_9
+  - ingredients_0
+  - ingredients_1
+  - ingredients_3
+  - ingredients_5
+  - ingredients_6
+  - ingredients_7
+  - Circle
+  - btnBack
+  - btnNext
+  - btnRestart
+  - speechBubble
+  m_RenderDataMap: {}
+  m_Tag: UI
+  m_IsVariant: 0

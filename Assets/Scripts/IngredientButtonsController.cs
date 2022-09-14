@@ -1,44 +1,49 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class IngredientButtonsController : MonoBehaviour
 {
-    [SerializeField]
-    private IngredientButton _ingredientButtonPrefab;
-    private List<IngredientButton> _ingredientBtns = new List<IngredientButton>();
+    [SerializeField] private IngredientButton _ingredientButtonPrefab;
+    private List<IngredientButton> _ingredientButtons = new List<IngredientButton>();
 
     public void SetupIngredientButtons(LevelData currentLevelData)
     {
+        if (_ingredientButtons.Count > 0)
+        {
+            foreach (var item in _ingredientButtons)
+            {
+                Destroy(item.gameObject);
+            }
+            _ingredientButtons.Clear();
+        }
         foreach (var item in currentLevelData.CurrentLevelIngredients)
         {
             IngredientButton btn = Instantiate(_ingredientButtonPrefab, transform);
             btn.ingredientData = item;
-            _ingredientBtns.Add(btn);
+            _ingredientButtons.Add(btn);
         }
     }
-    public void DoInteractableBtns()
+    public void DoInteractableIngredientButtons()
     {
-        foreach (var item in _ingredientBtns)
+        foreach (var item in _ingredientButtons)
         {
             item.Button.interactable = true;
         }
     }
 
-    public void DoUninteractableBtns()
+    public void DoUninteractableIngredientButtons()
     {
-        foreach (var item in _ingredientBtns)
+        foreach (var item in _ingredientButtons)
         {
             item.Button.interactable = false;
         }
     }
 
-    public void HideBtns()
+    public void HideIngredientButtons()
     {
         gameObject.SetActive(false);
     }
-    public void ShowBtns()
+    public void ShowIngredientButtons()
     {
         gameObject.SetActive(true);
     }

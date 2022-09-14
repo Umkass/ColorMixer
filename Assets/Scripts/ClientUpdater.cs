@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ClientUpdater : MonoBehaviour
@@ -9,7 +7,7 @@ public class ClientUpdater : MonoBehaviour
 
     public void UpdateClientModel()
     {
-        if(_clientModels != null && _clientModels.Length > 0)
+        if (_clientModels != null && _clientModels.Length > 0)
         {
             _currentClient.SetActive(false);
             _currentClient = _clientModels[Random.Range(0, _clientModels.Length)];
