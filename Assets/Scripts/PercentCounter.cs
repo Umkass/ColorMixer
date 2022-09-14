@@ -5,10 +5,9 @@ using UnityEngine.UI;
 public class PercentCounter : MonoBehaviour
 {
     [SerializeField] private Text _txtPecent;
-    [SerializeField] private LevelController _levelController;
-    [SerializeField] private UIManager _uiManager;
     private int _percent = 0;
-
+    public delegate void OnLevelComplete();
+    public OnLevelComplete levelComplete;
     private void Awake()
     {
         _txtPecent.text = _percent.ToString();
@@ -20,7 +19,7 @@ public class PercentCounter : MonoBehaviour
         _txtPecent.text = _percent.ToString();
         if (percent >= 90)
         {
-            _uiManager.LevelComplete();
+            levelComplete?.Invoke();
         }
     }
 
@@ -32,7 +31,7 @@ public class PercentCounter : MonoBehaviour
 
     public void CheckPercent(Color mixedColor)
     {
-        Color resultColor = _levelController.CurrentLevelData.ResultColor;
+        Color resultColor = LevelController.CurrentLevelData.ResultColor;
         Vector3 resultColorVector = new Vector3(resultColor.r, resultColor.g, resultColor.b); //Color RGB as Vector3
         Vector3 mixedColorVector = new Vector3(mixedColor.r, mixedColor.g, mixedColor.b); //Color RGB as Vector3
         // Vector3.Distance is distance between  colors

@@ -4,56 +4,59 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private LevelController _levelController;
-    [SerializeField] private IngredientButtonsController _ingredientBtnsController;
     [SerializeField] private PercentCounter _percentCounter;
     [SerializeField]
     private Button _btnStart,
         _btnBack,
         _btnRestart,
         _btnNext;
-    [SerializeField] private GameObject _levelComplete;
+    [SerializeField] private GameObject _gameMenu,
+        _levelCompleteMenu;
 
+    private void OnEnable()
+    {
+        _percentCounter.levelComplete += LevelComplete;
+    }
     private void Awake()
     {
-        _btnBack.gameObject.SetActive(false);
-        _btnRestart.gameObject.SetActive(false);
-        _percentCounter.gameObject.SetActive(false);
-        _levelComplete.gameObject.SetActive(false);
+        SetupMainMenuUI();
         _btnStart.onClick.AddListener(() =>
         {
-            _levelController.StartMixColors();
-            _btnStart.gameObject.SetActive(false);
-            _ingredientBtnsController.SetupIngredientButtons(_levelController.CurrentLevelData);
-            _ingredientBtnsController.ShowIngredientButtons();
-            _btnBack.gameObject.SetActive(true);
-            _btnRestart.gameObject.SetActive(true);
-            _percentCounter.gameObject.SetActive(true);
+            _levelController.StartGame();
+            SetupGameUI();
         });
         _btnBack.onClick.AddListener(() =>
         {
             _levelController.BackToMenu();
-            _btnStart.gameObject.SetActive(true);
-            _ingredientBtnsController.HideIngredientButtons();
-            _btnBack.gameObject.SetActive(false);
-            _btnRestart.gameObject.SetActive(false);
-            _percentCounter.gameObject.SetActive(false);
+            SetupMainMenuUI();
         });
         _btnRestart.onClick.AddListener(_levelController.RestartLevel);
         _btnNext.onClick.AddListener(() =>
         {
-            _levelComplete.gameObject.SetActive(false);
             _levelController.NextLevel();
-            _btnStart.gameObject.SetActive(true);
-            _ingredientBtnsController.HideIngredientButtons();
-            _btnBack.gameObject.SetActive(false);
-            _btnRestart.gameObject.SetActive(false);
-            _percentCounter.gameObject.SetActive(false);
             _percentCounter.ResetPercentCounter();
+            SetupMainMenuUI();
         });
     }
 
-    public void LevelComplete()
+    private void SetupMainMenuUI()
     {
-        _levelComplete.gameObject.SetActive(true);
+        _gameMenu.SetActive(false);
+        _levelCompleteMenu.SetActive(false);
+        _btnStart.gameObject.SetActive(true);
+    }
+    private void SetupGameUI()
+    {
+        _gameMenu.SetActive(true);
+        _btnStart.gameObject.SetActive(false);
+    }
+
+    private void LevelComplete()
+    {
+        _levelCompleteMenu.SetActive(true);
+    }
+    private void OnDisable()
+    {
+        _percentCounter.levelComplete -= LevelComplete;
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InputHandler : MonoBehaviour
+public class InputMixButtonClick : MonoBehaviour
 {
     [SerializeField] private Camera _mixerCamera;
     private LayerMask _layerMask = 1 << 6;

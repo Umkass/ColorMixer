@@ -34,17 +34,17 @@ public class IngredientButton : MonoBehaviour
 
     private void AddIngredient()
     {
-        StartCoroutine(waitAnimations());
-        _colorMixer.OpenCover();
+        StartCoroutine(WaitAnimations());
+        _colorMixer.OpenCoverAnimation();
         Ingredient newIngredient = Instantiate(ingredientData.Prefab, _spawnPosition, ingredientData.Prefab.transform.rotation);
         newIngredient.color = ingredientData.Color;
     }
 
-    private IEnumerator waitAnimations()
+    private IEnumerator WaitAnimations()
     {
         _mixButton.isInteractable = false;
         _ingredientBtnsController.DoUninteractableIngredientButtons();
-        yield return new WaitForSeconds(1.75f);
+        yield return new WaitForSeconds(1.75f); //there are several animations, so I chose the time
         _ingredientBtnsController.DoInteractableIngredientButtons();
         _mixButton.isInteractable = true;
     }

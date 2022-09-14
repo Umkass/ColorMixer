@@ -16,9 +16,9 @@ public class ColorMixer : MonoBehaviour
     private Renderer _liquidRenderer;
     private bool isFilled = false;
 
-    private Color _currentResultColor;
+    private Color _currentMixedColor;
 
-    public Color CurrentResultColor { get => _currentResultColor; private set => _currentResultColor = value; }
+    public Color CurrentMixedColor { get => _currentMixedColor; private set => _currentMixedColor = value; }
     public List<Color> IngredientColours { get => _ingredientColours; private set => _ingredientColours = value; }
 
     private void Awake()
@@ -32,24 +32,24 @@ public class ColorMixer : MonoBehaviour
 
     public void MixColours()
     {
-            float totalRed = 0f;
-            float totalGreen = 0f;
-            float totalBlue = 0f;
+        float totalRed = 0f;
+        float totalGreen = 0f;
+        float totalBlue = 0f;
 
-            foreach (Color colour in _ingredientColours)
-            {
-                totalRed += colour.r;
-                totalGreen += colour.g;
-                totalBlue += colour.b;
-            }
+        foreach (Color colour in _ingredientColours)
+        {
+            totalRed += colour.r;
+            totalGreen += colour.g;
+            totalBlue += colour.b;
+        }
 
-            float numColours = _ingredientColours.Count;
-            _currentResultColor = new Color(totalRed / numColours, totalGreen / numColours, totalBlue / numColours);
-            MixAction();
-            _liquidRenderer.material.SetColor("_Color", _currentResultColor);
+        float numColours = _ingredientColours.Count;
+        _currentMixedColor = new Color(totalRed / numColours, totalGreen / numColours, totalBlue / numColours);
+        StartMixAnimation();
+        _liquidRenderer.material.SetColor("_Color", _currentMixedColor);
     }
 
-    private void MixAction()
+    private void StartMixAnimation()
     {
         if (!isFilled)
         {
@@ -75,12 +75,12 @@ public class ColorMixer : MonoBehaviour
         _liquidRenderer.material.SetColor("_Color", Color.white);
     }
 
-    public void OpenCover()
+    public void OpenCoverAnimation()
     {
         _animator.Play(_openCoverClip);
     }
 
-    private void ShakeBlender()
+    private void ShakeBlenderAnimation()
     {
         _animator.Play(_shakeBlender);
     }
@@ -96,7 +96,7 @@ public class ColorMixer : MonoBehaviour
             newIngredient.isInBlender = true; //multiple trigger protection
             _ingredients.Add(newIngredient);
             _ingredientColours.Add(newIngredient.color);
-            ShakeBlender();
+            ShakeBlenderAnimation();
         }
     }
 }

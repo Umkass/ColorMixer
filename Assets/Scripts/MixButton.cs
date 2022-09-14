@@ -20,15 +20,15 @@ public class MixButton : MonoBehaviour
         {
             _colorMixer.MixColours();
             _animPressButton.Play();
-            StartCoroutine(waitAnimations());
+            StartCoroutine(WaitAnimations());
         }
     }
 
-    private IEnumerator waitAnimations()
+    private IEnumerator WaitAnimations()
     {
         isInteractable = false;
-        yield return new WaitForSeconds(2f);
-        _percentCounter.CheckPercent(_colorMixer.CurrentResultColor);
+        yield return new WaitForSeconds(2f); //there are several animations, so I chose the time
+        _percentCounter.CheckPercent(_colorMixer.CurrentMixedColor);
         isInteractable = true;
     }
 }

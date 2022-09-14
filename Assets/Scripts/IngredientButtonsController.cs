@@ -5,22 +5,32 @@ public class IngredientButtonsController : MonoBehaviour
 {
     [SerializeField] private IngredientButton _ingredientButtonPrefab;
     private List<IngredientButton> _ingredientButtons = new List<IngredientButton>();
+    private LevelData _currentLevelData;
 
-    public void SetupIngredientButtons(LevelData currentLevelData)
+    private void OnEnable()
     {
-        if (_ingredientButtons.Count > 0)
+        SetupIngredientButtons();
+    }
+
+    public void SetupIngredientButtons()
+    {
+        if(_currentLevelData != LevelController.CurrentLevelData)
         {
-            foreach (var item in _ingredientButtons)
+            if (_ingredientButtons.Count > 0)
             {
-                Destroy(item.gameObject);
+                foreach (var item in _ingredientButtons)
+                {
+                    Destroy(item.gameObject);
+                }
+                _ingredientButtons.Clear();
             }
-            _ingredientButtons.Clear();
-        }
-        foreach (var item in currentLevelData.CurrentLevelIngredients)
-        {
-            IngredientButton btn = Instantiate(_ingredientButtonPrefab, transform);
-            btn.ingredientData = item;
-            _ingredientButtons.Add(btn);
+            _currentLevelData = LevelController.CurrentLevelData;
+            foreach (var item in _currentLevelData.CurrentLevelIngredients)
+            {
+                IngredientButton btn = Instantiate(_ingredientButtonPrefab, transform);
+                btn.ingredientData = item;
+                _ingredientButtons.Add(btn);
+            }
         }
     }
     public void DoInteractableIngredientButtons()
@@ -37,14 +47,5 @@ public class IngredientButtonsController : MonoBehaviour
         {
             item.Button.interactable = false;
         }
-    }
-
-    public void HideIngredientButtons()
-    {
-        gameObject.SetActive(false);
-    }
-    public void ShowIngredientButtons()
-    {
-        gameObject.SetActive(true);
     }
 }

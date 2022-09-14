@@ -6,7 +6,7 @@ public class LevelController : MonoBehaviour
 {
     [SerializeField] private List<LevelData> _levels = new List<LevelData>();
     private int _levelNumber = 0;
-    [SerializeField] private LevelData _currentLevelData;
+    [SerializeField] private static LevelData _currentLevelData;
 
     [SerializeField] private ClientUpdater _client;
     [SerializeField] private ClientRequestLiquid _requestLiquid;
@@ -16,7 +16,7 @@ public class LevelController : MonoBehaviour
     private GameObject _mainCamera,
         _mixerCamera;
 
-    public LevelData CurrentLevelData { get => _currentLevelData; private set => _currentLevelData = value; }
+    public static LevelData CurrentLevelData { get => _currentLevelData; private set => _currentLevelData = value; }
 
     private void Awake()
     {
@@ -40,24 +40,32 @@ public class LevelController : MonoBehaviour
         _client.UpdateClientModel();
         _requestLiquid.SetRequestLiquidColor(_currentLevelData.ResultColor);
         _requestLiquid.Show();
-        _mainCamera.SetActive(true);
-        _mixerCamera.SetActive(false);
+        CameraMainMenu();
     }
 
     public void BackToMenu()
     {
-        _mainCamera.SetActive(true);
-        _mixerCamera.SetActive(false);
+        CameraMainMenu();
         _requestLiquid.Show();
     }
 
-    public void StartMixColors()
+    public void StartGame()
     {
-        _mixerCamera.gameObject.SetActive(true);
-        _mainCamera.gameObject.SetActive(false);
+        CameraMixer();
         _requestLiquid.Hide();
     }
 
+    private void CameraMainMenu()
+    {
+        _mainCamera.SetActive(true);
+        _mixerCamera.SetActive(false);
+    }
+
+    private void CameraMixer()
+    {
+        _mixerCamera.gameObject.SetActive(true);
+        _mainCamera.gameObject.SetActive(false);
+    }
     public void RestartLevel()
     {
         SceneManager.LoadScene(0, LoadSceneMode.Single);
@@ -71,11 +79,7 @@ public class LevelController : MonoBehaviour
 
         PlayerPrefs.SetInt("level", _levelNumber + 1);
         _currentLevelData = _levels[_levelNumber];
-        _client.UpdateClientModel();
-        _requestLiquid.SetRequestLiquidColor(_currentLevelData.ResultColor);
-        _requestLiquid.Show();
-        _mainCamera.SetActive(true);
-        _mixerCamera.SetActive(false);
+        StartLevel();
         _colorMixer.ResetLiquid();
     }
     private void OnApplicationQuit()
