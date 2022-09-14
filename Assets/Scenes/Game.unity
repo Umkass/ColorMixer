@@ -7196,6 +7196,14 @@ PrefabInstance:
       propertyPath: _percentCounter
       value: 
       objectReference: {fileID: 110900156}
+    - target: {fileID: 3808331424399198452, guid: 6650d1347e21a0444843da4d6ae238b1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5059470706557787900, guid: 6650d1347e21a0444843da4d6ae238b1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0912c4b9e8e82bc4681754768b123838, type: 2}
     - target: {fileID: 8269213754353535613, guid: 6650d1347e21a0444843da4d6ae238b1, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Blender_01

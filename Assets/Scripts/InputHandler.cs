@@ -37,7 +37,7 @@ public class InputHandler : MonoBehaviour
         if (Physics.Raycast(ray, out hit, _layerMask))
         {
             MixButton mixerButton = hit.collider.gameObject.GetComponent<MixButton>();
-            if (mixerButton!=null)
+            if (mixerButton!=null && mixerButton.isInteractable)
             {
                 mixerButton.PressButton();
             }

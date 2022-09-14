@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Client : MonoBehaviour
+public class ClientUpdater : MonoBehaviour
 {
     [SerializeField] private GameObject[] _clientModels;
     [SerializeField] private GameObject _currentClient;

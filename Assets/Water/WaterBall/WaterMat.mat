@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: WaterMat
-  m_Shader: {fileID: -6465566751694194690, guid: 57b6ef055a5b34a4aba91af3b9852638, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 1fa2180d6f5837844bcfd1de5f9dfb7e, type: 3}
   m_ShaderKeywords: _RECEIVE_SHADOWS_OFF
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -118,7 +118,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_babe3d00a4d5400a9feddb52a41d4a6c: {r: 1, g: 1, b: 1, a: 1}
+    - Color_babe3d00a4d5400a9feddb52a41d4a6c: {r: 1, g: 0.4377358, b: 0.4377358, a: 1}
     - Vector3_bb7c38b09f634097a55a223633a28e56: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

@@ -8,17 +8,22 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PolygonOffice_Material_01_A
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_df814fb1718447f4b430f7939cffe52f:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 63070be2573ac6640a080b00e06cc159, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -76,6 +81,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_30c2129fc1b14cacae4c5402852fa917: 0
+    - Vector1_7f26fb54a3f1446cae706364d1d4c87b: 0.1
+    - Vector1_96f9a553b5284eca81b8c2e93d4b3cef: 1
+    - Vector1_ab5bbc78aace46cca47c976624c57654: 0.01
+    - Vector1_ca96e47f336c4f3e94f6e18dd5768814: 0
+    - Vector1_ddb6293edce643b0ad001ef8e4bfe970: 0
+    - Vector1_f64f7fc51f514d1fa0c302cd1c54ace5: 0
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -105,6 +117,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_babe3d00a4d5400a9feddb52a41d4a6c: {r: 1, g: 0, b: 0, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}

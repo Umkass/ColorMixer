@@ -20,7 +20,8 @@ public class PercentCounter : MonoBehaviour
         _txtPecent.text = _percent.ToString();
         if (percent >= 90)
         {
-            //next level
+            _levelController.NextLevel();
+            ResetCounter();
         }
     }
 
@@ -32,5 +33,10 @@ public class PercentCounter : MonoBehaviour
         //Vector3.Distance is distance between  colors
         //100 - distance*100 = percent of similarity
         UpdatePercent(Convert.ToInt32(100f - Vector3.Distance(resultColorVector, mixedColorVector) * 100f));
+    }
+    private void ResetCounter()
+    {
+        _percent = 0;
+        _txtPecent.text = _percent.ToString();
     }
 }

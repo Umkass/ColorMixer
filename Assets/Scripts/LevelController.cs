@@ -8,7 +8,7 @@ public class LevelController : MonoBehaviour
     private int _levelNum = 0;
     [SerializeField] private LevelData _currentLevelData;
 
-    [SerializeField] private Client _client;
+    [SerializeField] private ClientUpdater _client;
     [SerializeField] private ClientRequestLiquid _requestLiquid;
 
     [SerializeField] GameObject _mainCamera;
@@ -30,8 +30,8 @@ public class LevelController : MonoBehaviour
         _client.UpdateClientModel();
         _requestLiquid.SetRequestLiquidColor(_currentLevelData.ResultColor);
         _requestLiquid.Show();
-        _mixerCamera.SetActive(false);
         _mainCamera.SetActive(true);
+        _mixerCamera.SetActive(false);
     }
 
     public void BackToMenu()
@@ -56,6 +56,8 @@ public class LevelController : MonoBehaviour
     public void NextLevel()
     {
         _levelNum++;
+        if (_levelNum > _levels.Count - 1)
+            _levelNum = 0;
         _currentLevelData = _levels[_levelNum];
         StartLevel();
     }

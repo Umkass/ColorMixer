@@ -10,6 +10,7 @@ public class MixButton : MonoBehaviour
     [SerializeField]
     private PercentCounter _percentCounter;
     private Animation _animPressButton;
+    public bool isInteractable = true;
 
     private void Awake()
     {
@@ -20,5 +21,13 @@ public class MixButton : MonoBehaviour
     {
         _percentCounter.CheckPercent(_colorMixer.MixColours());
         _animPressButton.Play();
+        StartCoroutine(waitAnimations());
+    }
+
+    private IEnumerator waitAnimations()
+    {
+        isInteractable = false;
+        yield return new WaitForSeconds(2f);
+        isInteractable = true;
     }
 }
